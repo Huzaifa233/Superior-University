@@ -1,0 +1,5 @@
+type,title,author,genre,pages,journal,DOI
+book,Python ,Huzaifa,Education,350,,
+book,C++ ,Ali,,,,
+article,AI,Talha,,,Medical,10.123
+article,SE,Dr.Ahmad,,,,
