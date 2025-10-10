@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Astronomy Picture of the Day</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Astronomy Picture of the Day</h1>
+        
+        <!-- Date search form -->
+        <form method="get" action="/">
+            <label for="date">Select a date:</label>
+            <input type="date" id="date" name="date" value="{{ selected_date }}">
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Show error message -->
+        {% if error_message %}
+            <p style="color: #ff5555; font-weight:bold;">{{ error_message }}</p>
+        {% endif %}
+
+        {% if apod %}
+            <h2>{{ apod.title }}</h2>
+            <p><b>Date:</b> {{ apod.date }}</p>
+            <img src="{{ apod.url }}" alt="APOD Image" class="apod-image">
+            <p>{{ apod.explanation }}</p>
+            <p><b>Copyright:</b> {{ apod.copyright or 'Public Domain' }}</p>
+            <p>View JSON at <a href="/apod{% if selected_date %}?date={{ selected_date }}{% endif %}">/apod</a></p>
+        {% endif %}
+    </div>
+</body>
+</html>
